@@ -19,6 +19,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
+SBIF_API_KEY = os.getenv('SBIF_API_KEY', None)
+if not SBIF_API_KEY:
+    raise Exception('SBIF_API_KEY is not set')
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY', 'xhdz4j#&2m!3+7=_@01tj@y+l=i85h8(@3a*2*m7b66n=inj7=')
 
@@ -38,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'tmc',
 ]
 
 MIDDLEWARE = [
